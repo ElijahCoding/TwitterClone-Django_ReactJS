@@ -29,8 +29,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 LOGIN_URL = '/login'
 MAX_TWEET_LENGTH = 240
 
-# Application definition
+TWEET_ACTION_OPTIONS = ['like', 'unlike', 'retweet']
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
