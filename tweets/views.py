@@ -4,7 +4,11 @@ from .models import Tweet
 from .forms import TweetForm
 from django.utils.http import is_safe_url
 from django.conf import settings
-from .serializers import TweetSerializer, TweetActionSerializer
+from .serializers import (
+    TweetSerializer,
+    TweetActionSerializer,
+    TweetCreateSerializer
+                          )
 from rest_framework.response import Response
 
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
@@ -21,7 +25,7 @@ def home_view(request, *args, **kwargs):
 @authentication_classes([SessionAuthentication])
 @permission_classes([IsAuthenticated])
 def tweet_create_view(request, *args, **kwargs):
-    serializer = TweetSerializer(data=request.data)
+    serializer = TweetCreateSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         obj = serializer.save(user=request.user)
         return Response(serializer.data, status=201)
