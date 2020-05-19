@@ -8,12 +8,19 @@ from tweets.views import (
     tweet_list_view,
     tweet_create_view,
 )
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view),
+    path('react/', TemplateView.as_view(template_name='react.html')),
     path('tweets', tweet_list_view),
     path('create-tweet', tweet_create_view),
     path('tweets/<int:tweet_id>', tweet_detail_view),
     path('api/tweets/', include('tweets.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
