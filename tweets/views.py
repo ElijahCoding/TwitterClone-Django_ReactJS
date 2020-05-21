@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 
-
 ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
 def home_view(request, *args, **kwargs):
