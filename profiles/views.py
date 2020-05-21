@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import Http404
 
 from .models import Profile
+from .forms import ProfileForm
+
 
 def profile_detail_view(request, username, *args, **kwargs):
     qs = Profile.objects.filter(user__username=username)
