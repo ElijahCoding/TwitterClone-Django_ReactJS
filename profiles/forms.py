@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
-from .models import Profile
+from .models import Profile 
 
 User = get_user_model()
+
 
 class UserProfileForm(forms.ModelForm):
     location = forms.CharField(required=False)
@@ -12,6 +13,7 @@ class UserProfileForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email']
 
+
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
@@ -19,6 +21,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['location', 'bio']
+
 
 class ProfileBasicForm(forms.Form):
     first_name = forms.CharField(required=False)

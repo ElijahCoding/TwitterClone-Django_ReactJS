@@ -101,7 +101,7 @@ function handleTweetCreateFormDidSumbit(event) {
                 }
             } else {
                 alert("An error occured. Please try again.")
-            }
+            }   
         } else if (xhr.status === 401) {
             alert("You must login!")
             window.location.href = "/login"
@@ -112,7 +112,7 @@ function handleTweetCreateFormDidSumbit(event) {
         else if (xhr.status === 500) {
             alert("There was a server error, please try again.")
         }
-
+        
     }
     xhr.onerror = function() {
         alert("An error occurred. Please try again later.")
@@ -123,7 +123,7 @@ const tweetCreateFormEl = document.getElementById("tweet-create-form")
 tweetCreateFormEl.addEventListener("submit", handleTweetCreateFormDidSumbit)
 
 
-const tweetsContainerElement = document.getElementById("tweets")
+const tweetsContainerElement = document.getElementById("tweets") 
 
 function loadTweets(tweetsElement) {
     const xhr = new XMLHttpRequest()
@@ -170,32 +170,32 @@ function handleTweetActionBtn(tweet_id, currentCount, action) {
         loadTweets(tweetsContainerElement)
     }
     xhr.send(data)
-    return
+    return 
 }
 
 
 function RetweetBtn(tweet) {
-    return "<button class='btn btn-outline-success btn-sm' onclick=handleTweetActionBtn(" +
+    return "<button class='btn btn-outline-success btn-sm' onclick=handleTweetActionBtn(" + 
     tweet.id + "," + tweet.likes + ",'retweet')>Retweet</button>"
 }
 
 
 function UnLikeBtn(tweet) {
-    return "<button class='btn btn-outline-primary btn-sm' onclick=handleTweetActionBtn(" +
+    return "<button class='btn btn-outline-primary btn-sm' onclick=handleTweetActionBtn(" + 
     tweet.id + "," + tweet.likes + ",'unlike')>Unlike</button>"
 }
 
 function LikeBtn(tweet) {
-    return "<button class='btn btn-primary btn-sm' onclick=handleTweetActionBtn(" +
+    return "<button class='btn btn-primary btn-sm' onclick=handleTweetActionBtn(" + 
     tweet.id + "," + tweet.likes + ",'like')>" + tweet.likes + " Likes</button>"
 }
 
 function formatTweetElement(tweet) {
-    var formattedTweet = "<div class='col-12 col-md-10 mx-auto border rounded py-3 mb-4 tweet' id='tweet-" + tweet.id
-    + "'><p>" + tweet.content +
-        "</p><div class='btn-group'>" +
+    var formattedTweet = "<div class='col-12 col-md-10 mx-auto border rounded py-3 mb-4 tweet' id='tweet-" + tweet.id 
+    + "'><p>" + tweet.content + 
+        "</p><div class='btn-group'>" + 
             LikeBtn(tweet) +
-            UnLikeBtn(tweet) +
+            UnLikeBtn(tweet) + 
             RetweetBtn(tweet) +
         "</div></div>"
     return formattedTweet
